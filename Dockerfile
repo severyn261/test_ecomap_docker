@@ -34,4 +34,5 @@ RUN mkdir /home/ubuntu/home
 RUN mkdir /home/ubuntu/home/workspace
 RUN cd /home/ubuntu/home/workspace; git clone https://github.com/severyn261/test_ecomap_docker.git
 RUN chown ubuntu:ubuntu -R /home/ubuntu/home & chmod 777 -R /home/ubuntu/home
-RUN bash /home/ubuntu/home/workspace/test_ecomap_docker/testrun.sh
+RUN mv /home/ubuntu/home/workspace/test_ecomap_docker /home/ubuntu/home/workspace/test_ecomap
+RUN bash /home/ubuntu/home/workspace/test_ecomap/testrun.sh
