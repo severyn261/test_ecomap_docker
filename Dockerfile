@@ -36,3 +36,8 @@ RUN cd /home/ubuntu/home/workspace; git clone https://github.com/severyn261/test
 RUN chown ubuntu:ubuntu -R /home/ubuntu/home & chmod 777 -R /home/ubuntu/home
 RUN mv /home/ubuntu/home/workspace/test_ecomap_docker /home/ubuntu/home/workspace/test_ecomap
 RUN bash /home/ubuntu/home/workspace/test_ecomap/testrun.sh
+
+CMD [“/usr/sbin/apache2ctl”, “-D”, “FOREGROUND”]
+
+EXPOSE 80
+EXPOSE 3306
