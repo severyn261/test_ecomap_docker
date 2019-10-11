@@ -29,7 +29,7 @@ RUN apt-get update && apt-get install -y \
    mysql-client \
 && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN adduser ubuntu; echo ubuntu:ubuntu
+RUN adduser ubuntu; echo ecomap:ecomap
 RUN mkdir /home/ubuntu/home
 RUN mkdir /home/ubuntu/home/workspace
 RUN cd /home/ubuntu/home/workspace; git clone https://github.com/severyn261/test_ecomap_docker.git
@@ -37,7 +37,9 @@ RUN chown ubuntu:ubuntu -R /home/ubuntu/home & chmod 777 -R /home/ubuntu/home
 RUN mv /home/ubuntu/home/workspace/test_ecomap_docker /home/ubuntu/home/workspace/test_ecomap
 RUN bash /home/ubuntu/home/workspace/test_ecomap/testrun.sh
 
-CMD [“/usr/sbin/apache2ctl”, “-D”, “FOREGROUND”]
+RUN cp /home/ubuntu/home/workspace/test_ecomap/ecomap/etc/_ecomap.apache.conf /etc/apache2/sites-available/000-default.conf
+
+CMD ["apache2ctl", "-D", "FOREGROUND"]
 
 EXPOSE 80
 EXPOSE 3306
