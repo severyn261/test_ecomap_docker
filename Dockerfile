@@ -29,7 +29,8 @@ RUN apt-get update && apt-get install -y \
    mysql-client \
 && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN adduser ubuntu; echo ecomap:ecomap
+RUN adduser ubuntu;
+RUN adduser ecomap;
 RUN mkdir /home/ubuntu/home
 RUN mkdir /home/ubuntu/home/workspace
 RUN cd /home/ubuntu/home/workspace; git clone https://github.com/severyn261/test_ecomap_docker.git
